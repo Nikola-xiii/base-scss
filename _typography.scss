@@ -1,0 +1,62 @@
+/**
+ * ----------------------------------------------------------------------------------------
+ * Base styles.
+ * ----------------------------------------------------------------------------------------
+ */
+
+body {
+  position: relative;
+
+  color: $body-text-color;
+  font: #{$base-font-size}/#{$baseline} $body-text-font;
+  -webkit-font-smoothing: antialiased;
+}
+
+/**
+ * Default spacing for paragraphs.
+ */
+p {
+  margin-bottom: $baseline;
+}
+
+/**
+ * Default styles for all headings.
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: $baseline;
+
+  font-family: $heading-font;
+}
+
+/**
+ * Individual styles for the headings.
+ */
+h1 {}
+
+h2 {}
+
+h3 {}
+
+h4 {}
+
+h5 {}
+
+h6 {}
+
+/**
+ * Links.
+ */
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
