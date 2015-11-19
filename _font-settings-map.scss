@@ -17,6 +17,21 @@ $line-heights: (
 $base-font-size: 1rem;
 $base-line-height: $base-font-size * 1.25;
 
+$p-font-sizes: (
+  null  : 15px,
+  small : 16px,
+  medium: 17px,
+  large : 19px
+);
+
+$h1-font-sizes: (
+  null  : 28px,
+  small : 31px,
+  medium: 33px,
+  large : 36px
+);
+
+
 @function type-scale($level) {
   @return map-get($type-scale, $level);
 }
@@ -29,4 +44,22 @@ $base-line-height: $base-font-size * 1.25;
 @mixin type-setting($level: 0) {
   font-size: type-scale($level);
   line-height: line-height($level);
+}
+
+@mixin font-size-responsive($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      @include make-font-size($fs-font-size);
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        @include make-font-size($fs-font-size);
+      }
+    }
+  }
 }
